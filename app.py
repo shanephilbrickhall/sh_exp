@@ -9,6 +9,14 @@ app = Flask(__name__)
 app.secret_key = secret_key
 
 
+@app.route('/')
+def home():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        return render_template('site_directory.html')
+
+
 @app.route('/login', methods=['GET','POST'])
 def user_login():
     POST_USERNAME = str(request.form['username'])
@@ -19,9 +27,10 @@ def user_login():
         session['logged_in'] = True
     else:
         flash('Invalid Username or Password; you will be redirected, please revise login credentials and reattempt')
-    return hello()
+    return home()
 
-@app.route('/')
+
+@app.route('/hello')
 def hello():
     return "Hello World!"
 
