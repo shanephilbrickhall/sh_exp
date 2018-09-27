@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = secret_key
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET','POST'])
 def user_login():
     POST_USERNAME = str(request.form['username'])
     POST_PASSWORD = str(request.form['password'])
