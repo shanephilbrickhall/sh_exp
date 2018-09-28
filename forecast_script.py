@@ -17,10 +17,15 @@ import statsmodels
 from statsmodels.tsa.stattools import adfuller, acf, pacf
 import os
 
+# The following contains the ISO-NE Real-Time pricing prediction model experiment created by Shane Hall for RESurety
+# All code is original and was created for the purpose of this demonstration/review. Thank you and lets get started!
+
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
-# Break out of funcitons for use in script run includes utility funcitons for loading data running DF test month lists etc.
+# Below is a simple break out of functions for use in script run;
+# mainly including utility functions for loading data running DF test month lists etc.
 
+# Un-used
 def test_stationarity (timeseries):
     # Determine rolling statistics
     rolmean = timeseries.rolling(window=52, center=False).mean()
@@ -151,6 +156,7 @@ def grid_search_opt(data=None,search_parameters=None,train_percentage=None,):
            grid_search_model_opt.best_params_, grid_search_model_opt.best_score_
 
 
+# START OF MAIN SCRIPT:
 # First phase is to pull in initial base data sets: ISONE DA, ISONE RT, Boston Precip, Boston Tmp High, Boston Temp Low
 
 
@@ -221,15 +227,6 @@ ax6.xaxis.set_major_locator(plt.MaxNLocator(10))
 fig.tight_layout()
 plt.show()
 
-
-print('ISONE DAY AHEAD: ', iso_day_ahead.shape)
-print('ISONE RT : ', iso_real_time.shape)
-print('AVG TMP: ', avg_tmp_data.shape)
-print('MAX TMP: ', max_tmp_data.shape)
-print('MIN TMP: ', min_tmp_data.shape)
-print('PRECIP: ', precip_data.shape)
-
-
 # Now that you have loaded all the data and checked for data gaps and other anomalies you can concatenate the data sets
 # into a usable matrix for the XGBoost algorithm. Format = [avg temp, max temp, min temp, day ahead, real time
 concat_data_set = np.stack((avg_tmp_data,max_tmp_data,min_tmp_data,precip_data,iso_day_ahead, iso_real_time),axis=-1)
@@ -252,7 +249,7 @@ X_train, X_test, y_train, y_test = train_test_split(support_set, result_set,
 
 print("Here is the X_train and y_train shapes: ", X_train.shape, y_train.shape)
 
-print("Here is the start of the non-grid-search optimized model")
+print("Start of the non-grid-search optimized model")
 
 # Finally on to the model; in the first phase the model is trained using standard model parameters
 
@@ -261,14 +258,13 @@ model_01.fit(X_train, y_train)
 std_prediction = model_01.predict(X_test)
 
 # Examine the standard model run note parameter selection and accuracy
-print("Here is the model summary: ", model_01)
+print("Here is the standard model summary: ", model_01)
 
 # Determine model accuracy score
 print("Pre-Grid Search Model Accuracy: %.2f%%" % (model_01.score(X_test,y_test)))
 
 
-
-print("Here is the start of the grid-search optimized model")
+print("Start of the grid-search optimized model")
 
 # In the second phase the model will be run through a standard parameter grid search style optimization
 # in doing this we can investigate/dial in the model to improve accuracy
@@ -328,7 +324,6 @@ plt.legend()
 fig0.tight_layout()
 
 plt.show()
-
 
 # Now that we have constructed and analyzed our data an model lets put it to use
 # In phase three we will use 12 Month summary data to build scenarios this is a useful tactic when assessing risk
