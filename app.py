@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort, jsonify
+from forecast_controller import *
 import os
 
 secret_key = os.environ.get('SECRET_KEY')
@@ -33,6 +34,31 @@ def user_login():
 @app.route('/hello')
 def hello():
     return "Hello World!"
+
+@app.route('/base_data_display', methods=['GET','POST'])
+def base_data_display():
+    if not session.get('logged_in'):
+        return render_template('login.html')
+    else:
+        base_data = pull_all_data()
+
+        dates = base_data[0]
+        iso_real_time = base_data[1]
+        iso_day_ahead = base_data[2]
+        avg_tmp_data = base_data[3]
+        max_tmp_data = base_data[4]
+        min_tmp_data = base_data[5]
+        precip_data = base_data[6]
+
+        return render_template('line_chart.html', title='Base Data: ISONE RT, ISONE DA, BOST AVG TMP, '
+                                                        'BOST HIGH TMP, BOST LOW TMP, BOST PRECIP',
+                               max1=170, max2=80,max3=20,labels=dates,
+                               values1=iso_real_time,values2=iso_day_ahead,values3=avg_tmp_data,
+                               values4=max_tmp_data,values5=min_tmp_data,values6=precip_data )
+
+
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
