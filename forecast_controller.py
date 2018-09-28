@@ -179,8 +179,8 @@ def pull_all_data():
 
     dates = pd_get_month_list(start_date='2008-01-01',end_date='2018-08-01')
 
-    return [list(dates),list(iso_real_time),list(iso_day_ahead),list(avg_tmp_data),
-            list(max_tmp_data),list(min_tmp_data),list(precip_data)]
+    return [dates, iso_real_time, iso_day_ahead, avg_tmp_data,
+            max_tmp_data, min_tmp_data, precip_data]
 
 def compare_std_opt():
 
@@ -270,7 +270,7 @@ def compare_std_opt():
 
     dates0 = pd_get_month_list(start_date='2018-08-01',end_date='2020-09-01')
 
-    return [dates0,std_prediction,opt_prediction]
+    return [dates0, std_prediction, opt_prediction]
 
 
 
@@ -413,7 +413,7 @@ def scenario_build():
 
     dates1 = pd_get_month_list(start_date='2008-01-01',end_date='2019-08-01')
 
-    return [dates1,iso_real_time,avg_prediction,high_prediction,low_prediction ]
+    return [dates1, iso_real_time, avg_prediction, high_prediction, low_prediction ]
 
 
 
