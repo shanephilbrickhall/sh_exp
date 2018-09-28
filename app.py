@@ -50,7 +50,7 @@ def base_data_display():
         min_tmp_data = base_data[5]
         precip_data = base_data[6]
 
-        return render_template('line_chart.html', title='Base Data: ISONE RT, ISONE DA, BOST AVG TMP, '
+        return render_template('base_data_chart.html', title='Base Data: ISONE RT, ISONE DA, BOST AVG TMP, '
                                                         'BOST HIGH TMP, BOST LOW TMP, BOST PRECIP',
                                max1=170, max2=80,max3=20,labels=dates,
                                values1=iso_real_time,values2=iso_day_ahead,values3=avg_tmp_data,
