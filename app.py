@@ -35,6 +35,7 @@ def user_login():
 def hello():
     return "Hello World!"
 
+
 @app.route('/base_data_display', methods=['GET'])
 def base_data_display():
     if not session.get('logged_in'):
@@ -63,7 +64,7 @@ def base_data_display():
 
 
 @app.route('/model_comparison', methods=['GET'])
-def base_data_display():
+def model_comparison():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
@@ -86,7 +87,7 @@ def base_data_display():
 
 
 @app.route('/scenario_comparison', methods=['GET'])
-def base_data_display():
+def scenario_comparison():
     if not session.get('logged_in'):
         return render_template('login.html')
     else:
@@ -107,6 +108,7 @@ def base_data_display():
         print(iso_rt_hist_data,avg_scn_data,high_scn_data,low_scn_data,dates)
 
         return render_template('hi_low_avg_scenario.html')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
