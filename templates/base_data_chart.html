@@ -4,9 +4,39 @@
   <meta charset="utf-8" />
   <title>{{ title }}</title>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+                google.charts.load('current', {'packages':['line', 'corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+
+                  var data = new google.visualization.DataTable();
+                  data.addColumn('string', 'period');
+                  data.addColumn('number', '{{ title| safe }}');
+
+                  data.addRows({{ values1| safe}});
+
+                  var options = {
+                    chart: {
+                      title: '{{ title| safe }}'
+                    },
+                    width: 1200,
+                    height: 575
+                  };
+
+                  var chart = new google.charts.Line(document.getElementById('chart_div'));
+
+                  chart.draw(data, google.charts.Line.convertOptions(options));
+                }
+
+    </script>
 </head>
 
 <body>
+<div id="chart_div" style="border: 1px solid #ccc" align="center"></div>
+
   <center>
     <h1>{{ title }}</h1>
       <canvas id="chart1" width="600" height="400"></canvas>
@@ -17,6 +47,7 @@
       <canvas id="chart6" width="600" height="400"></canvas>
     <script>
       // bar chart data
+
       var barData = {
         labels : [
           {% for item in labels %}
@@ -36,7 +67,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
@@ -85,7 +122,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
@@ -134,7 +177,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
@@ -183,7 +232,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
@@ -232,7 +287,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
@@ -281,7 +342,13 @@
               {{ item }},
             {% endfor %}]
           }
-	]
+	], xAxes: [{
+            type: 'time',
+            ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+            }
+        }]
       }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
