@@ -4,34 +4,6 @@
   <meta charset="utf-8" />
   <title>{{ title }}</title>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-
-                google.charts.load('current', {'packages':['line', 'corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                  var data = new google.visualization.DataTable();
-                  data.addColumn('string', 'period');
-                  data.addColumn('number', '{{ title| safe }}');
-
-                  data.addRows({{ values1| safe}});
-
-                  var options = {
-                    chart: {
-                      title: '{{ title| safe }}'
-                    },
-                    width: 1200,
-                    height: 575
-                  };
-
-                  var chart = new google.charts.Line(document.getElementById('chart_div'));
-
-                  chart.draw(data, google.charts.Line.convertOptions(options));
-                }
-
-    </script>
 </head>
 
 <body>
@@ -63,18 +35,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values01 %}
+	    {% for item in values1 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
@@ -118,18 +95,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values02 %}
+	    {% for item in values2 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
@@ -173,18 +155,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values03 %}
+	    {% for item in values3 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
@@ -228,18 +215,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values04 %}
+	    {% for item in values4 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
@@ -283,18 +275,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values05 %}
+	    {% for item in values5 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
@@ -338,18 +335,23 @@
           pointHighlightStroke: "rgba(151,187,205,1)",
           bezierCurve : false,
           data : [
-	    {% for item in values06 %}
+	    {% for item in values6 %}
               {{ item }},
             {% endfor %}]
           }
-	], xAxes: [{
+	]
+      },
+      options:{
+      scales: {
+       xAxes: [{
             type: 'time',
             ticks: {
                 autoSkip: true,
                 maxTicksLimit: 20
             }
         }]
-      }
+        }
+        }
       Chart.defaults.global.animationSteps = 50;
       Chart.defaults.global.tooltipYPadding = 16;
       Chart.defaults.global.tooltipCornerRadius = 0;
