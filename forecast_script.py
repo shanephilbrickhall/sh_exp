@@ -353,7 +353,7 @@ real_time_month_summary_holder = []
 for month in real_time_month_holder:
     # Pull in the avg, max , and min for each month
     m_list = []
-    m_list.append((month.sum()/month.__len__()))
+    m_list.append((month.average()))
     m_list.append(month.max())
     m_list.append(month.min())
     real_time_month_summary_holder.append(m_list)
@@ -370,7 +370,7 @@ for i in range(0,12):
 day_ahead_month_summary_holder = []
 for month in day_ahead_month_holder:
     m_list=[]
-    m_list.append((month.sum()/month.__len__()))
+    m_list.append((month.average()))
     m_list.append(month.max())
     m_list.append(month.min())
     day_ahead_month_summary_holder.append(m_list)
