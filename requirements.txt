@@ -15,7 +15,7 @@ gunicorn==19.7.1
 Flask-JWT-Extended==3.7.2
 idna==2.6
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 jmespath==0.9.3
 kiwisolver==1.0.1
 MarkupSafe==1.0
